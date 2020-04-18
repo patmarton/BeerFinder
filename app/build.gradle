@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.beerfinder"
-        minSdkVersion 21
+        minSdkVersion 26
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -34,8 +34,11 @@ dependencies {
 
 
     //Dagger
-    implementation 'com.google.dagger:dagger:2.21'
-    annotationProcessor "com.google.dagger:dagger-compiler:2.21"
-
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.13'
+    implementation 'com.google.dagger:dagger:2.13'
+    implementation 'androidx.room:room-runtime:2.1.0'
+    annotationProcessor 'androidx.room:room-compiler:2.1.0'
+    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.squareup.retrofit2:retrofit:2.7.1'
 
 }
