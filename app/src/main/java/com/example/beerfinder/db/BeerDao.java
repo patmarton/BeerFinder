@@ -19,7 +19,7 @@ public interface BeerDao {
     List<Beer> getAllBeers();
 
     @Query("SELECT * FROM Beer WHERE beerId = :beerId")
-    Beer getBeerById(int beerId);
+    Beer getBeerById(Long beerId);
 
     @Delete
     void deleteBeer(Beer beer);

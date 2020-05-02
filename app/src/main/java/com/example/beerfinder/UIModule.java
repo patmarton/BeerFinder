@@ -35,12 +35,6 @@ public class UIModule {
         return new DetailsPresenter();
     }
 
-    @Provides
-    @Singleton
-    public NetworkApi networkapi(){
-        //TODO change java version?
-        return null;
-    }
 
     @Provides
     @Singleton
