@@ -11,5 +11,10 @@ public class DetailsPresenter extends Presenter<IDetailsView>{
     @Inject
     Repository repository;
 
+    @Inject
+    public DetailsPresenter(){
+
+    }
+
     //TODO
 }

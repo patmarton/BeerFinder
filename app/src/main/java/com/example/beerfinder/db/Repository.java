@@ -21,6 +21,7 @@ public class Repository {
 
     private BeerDatabase beerDatabase;
 
+    @Inject
     public Repository(){
         BeerFinderApplication.injector.inject(this);
         beerDatabase = Room.databaseBuilder(context, BeerDatabase.class,"beerdb").build();
@@ -82,7 +83,7 @@ public class Repository {
         }.execute();
     }
 
-    public void DeleteBookById(final Long beerId){
+    public void DeleteBeerById(final Long beerId){
         final Beer beer = getBeerById(beerId);
         new AsyncTask<Void, Void, Void>(){
             @Override

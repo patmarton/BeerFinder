@@ -13,7 +13,7 @@ public class Beer {
     //Attributes
 
     @PrimaryKey
-    private int beerId;
+    private Long beerId;
 
     private String description;
 
@@ -28,7 +28,7 @@ public class Beer {
     //Getters and Setters
 
 
-    public int getBeerId() {
+    public Long getBeerId() {
         return beerId;
     }
 
@@ -44,7 +44,7 @@ public class Beer {
         return abv;
     }
 
-    public void setBeerId(int beerId) {
+    public void setBeerId(Long beerId) {
         this.beerId = beerId;
     }
 

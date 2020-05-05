@@ -1,5 +1,6 @@
 package com.example.beerfinder.presenter;
 
+import com.example.beerfinder.BeerFinderApplication;
 import com.example.beerfinder.db.Repository;
 import com.example.beerfinder.model.Beer;
 import com.example.beerfinder.network.NetworkApi;
@@ -25,11 +26,42 @@ public class ListPresenter extends Presenter<IListView>{
     NetworkInteractor networkInteractor;
 
 
-    private void persistBeer(List<Beer> beers){
-        repository.insertBeers(beers);
+    @Inject
+    public ListPresenter(){
     }
 
 
 
-    //TODO
+   public void persistBeer(List<Beer> beers){
+        repository.insertBeers(beers);
+    }
+
+    public void deleteBeerById(Long id){
+        repository.DeleteBeerById(id);
+    }
+
+    public void deleteBeer(Beer beer){
+        repository.DeleteBeer(beer);
+    }
+
+    public List<Beer> getAllBeers(){
+        return repository.getAllBeers();
+    }
+
+    public List<Beer> getAllBeersFromApi() throws IOException {
+        return networkInteractor.getBeers();
+    }
+
+
+
+    @Override
+    public void attachScreen(IListView screen) {
+        super.attachScreen(screen);
+        BeerFinderApplication.injector.inject(this);
+    }
+
+    @Override
+    public void detachScreen() {
+        super.detachScreen();
+    }
 }

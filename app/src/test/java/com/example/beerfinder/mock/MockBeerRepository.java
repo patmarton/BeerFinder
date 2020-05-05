@@ -3,9 +3,64 @@ package com.example.beerfinder.mock;
 import com.example.beerfinder.db.Repository;
 import com.example.beerfinder.model.Beer;
 
+import org.mockito.Mock;
+import org.mockito.Mockito;
+
+import java.util.ArrayList;
 import java.util.List;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyListOf;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.doAnswer;
+
 public class MockBeerRepository extends Repository {
+
+
+
+    @Mock
+    public static Repository mockDatabaseRepository;
+
+    public static List<Beer> mockTable;
+
+
+    public static void init(){
+        generateMockRespository();
+    }
+
+    private static void generateMockRespository() {
+
+        mockTable = new ArrayList<>();
+        mockDatabaseRepository = Mockito.mock(Repository.class);
+
+        doAnswer(invocation -> {
+            List<Beer> beers = invocation.getArgument(0);
+
+            mockTable.addAll(beers);
+
+            return null;
+        }).when(mockDatabaseRepository).insertBeers(anyListOf(Beer.class));
+
+        doAnswer(invocation -> {
+            Beer beer = invocation.getArgument(0);
+
+            mockTable.remove(beer);
+
+            return null;
+        }).when(mockDatabaseRepository).DeleteBeer(any(Beer.class));
+
+        doAnswer(invocation -> {
+            Long beerId = invocation.getArgument(0);
+
+            mockTable.removeIf(book -> book.getBeerId().equals(beerId));
+
+            return null;
+        }).when(mockDatabaseRepository).DeleteBeerById(anyLong());
+
+
+
+    }
+
 
     @Override
     public void insertBeers(List<Beer> beers) {
@@ -28,7 +83,7 @@ public class MockBeerRepository extends Repository {
     }
 
     @Override
-    public void DeleteBookById(Long beerId) {
-        super.DeleteBookById(beerId);
+    public void DeleteBeerById(Long beerId) {
+        super.DeleteBeerById(beerId);
     }
 }

@@ -3,6 +3,7 @@ package com.example.beerfinder.view;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.beerfinder.BeerFinderApplication;
 import com.example.beerfinder.R;
@@ -15,6 +16,8 @@ public class ListActivity extends AppCompatActivity implements IListView{
     @Inject
     ListPresenter listPresenter;
 
+    private RecyclerView recyclerView;
+
     @Override
     public void showBeers(String s) {
         //TODO
@@ -25,6 +28,9 @@ public class ListActivity extends AppCompatActivity implements IListView{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.beer_list);
         BeerFinderApplication.injector.inject(this);
+
+        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+
     }
 
     @Override
