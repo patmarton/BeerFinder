@@ -8,6 +8,7 @@ import com.example.beerfinder.network.NetworkInteractor;
 import com.example.beerfinder.view.IListView;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -74,6 +75,14 @@ public class ListPresenter extends Presenter<IListView>{
     @Override
     public void detachScreen() {
         super.detachScreen();
+    }
+
+    public List<String> extractName(List<Beer> beers){
+        List<String> names = new ArrayList<>();
+        for(Beer beer : beers){
+            names.add(beer.getName());
+        }
+        return names;
     }
 
 }

@@ -19,6 +19,8 @@ public class Beer {
 
     private String tagline;
 
+    private String name;
+
     private double abv;
 
 
@@ -58,5 +60,13 @@ public class Beer {
 
     public void setAbv(double abv) {
         this.abv = abv;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

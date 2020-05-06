@@ -73,13 +73,14 @@ public class ListActivity extends AppCompatActivity implements IListView{
             beers = new ArrayList<>();
         }
 
-        List<String> list = new ArrayList<>();
+       /* List<String> list = new ArrayList<>();
 
         for(Beer beer: beers){
             list.add(beer.getTagline());
-        }
+        }*/
 
-        String[] array = list.toArray(new String[list.size()]);
+       List<String> list = listPresenter.extractName(beers);
+       String[] array = list.toArray(new String[list.size()]);
 
 
 
