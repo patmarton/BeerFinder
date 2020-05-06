@@ -1,4 +1,5 @@
 package com.example.beerfinder.test;
 
-public class DetailsTest {
+public class NetworkTest {
+
 }

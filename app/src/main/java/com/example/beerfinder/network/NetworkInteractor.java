@@ -11,11 +11,12 @@ import retrofit2.Call;
 
 public class NetworkInteractor {
 
+    @Inject
     NetworkApi networkApi;
 
     @Inject
-    public NetworkInteractor(NetworkApi networkApi){
-        this.networkApi = networkApi;
+    public NetworkInteractor(){
+
     }
 
     public List<Beer> getBeers() throws IOException {

@@ -9,6 +9,8 @@ import org.mockito.Mockito;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyListOf;
 import static org.mockito.ArgumentMatchers.anyLong;
@@ -18,10 +20,13 @@ public class MockBeerRepository extends Repository {
 
 
 
-    @Mock
-    public static Repository mockDatabaseRepository;
 
-    public static List<Beer> mockTable;
+
+
+    @Mock
+    public static Repository mockDatabaseRepository = Mockito.mock(Repository.class);;
+
+    public static List<Beer> mockTable = new ArrayList<>();;
 
 
     public static void init(){

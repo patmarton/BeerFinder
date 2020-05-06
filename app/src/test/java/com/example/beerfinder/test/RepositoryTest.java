@@ -5,6 +5,7 @@ import android.os.Build;
 
 import com.example.beerfinder.mock.MockBeerRepository;
 import com.example.beerfinder.model.Beer;
+import com.example.beerfinder.presenter.ListPresenter;
 
 import org.junit.Before;
 import org.junit.Assert;
@@ -16,6 +17,8 @@ import org.robolectric.annotation.Config;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.times;
@@ -23,6 +26,9 @@ import static org.mockito.Mockito.verify;
 
 @RunWith(RobolectricTestRunner.class)
 public class RepositoryTest {
+
+    @Inject
+    ListPresenter listPresenter;
 
     @Before
     public void startup(){

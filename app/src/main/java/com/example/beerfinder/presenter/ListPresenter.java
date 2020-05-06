@@ -22,12 +22,17 @@ public class ListPresenter extends Presenter<IListView>{
     //Inject Interactors
     @Inject
     Repository repository;
+
     @Inject
     NetworkInteractor networkInteractor;
 
 
     @Inject
     public ListPresenter(){
+    }
+
+    public ListPresenter(Repository repository){
+        this.repository = repository;
     }
 
 
@@ -52,7 +57,13 @@ public class ListPresenter extends Presenter<IListView>{
         return networkInteractor.getBeers();
     }
 
+    public Repository getRepository() {
+        return repository;
+    }
 
+    public void setRepository(Repository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public void attachScreen(IListView screen) {
@@ -64,4 +75,5 @@ public class ListPresenter extends Presenter<IListView>{
     public void detachScreen() {
         super.detachScreen();
     }
+
 }
