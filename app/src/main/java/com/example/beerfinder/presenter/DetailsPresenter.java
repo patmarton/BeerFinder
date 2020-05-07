@@ -48,5 +48,9 @@ public class DetailsPresenter extends Presenter<IDetailsView>{
         return beers.get(1);
     }
 
+    public void persistBeer(List<Beer> beers){
+        repository.insertBeers(beers);
+    }
+
     //TODO
 }

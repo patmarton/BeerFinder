@@ -6,6 +6,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -35,6 +36,7 @@ public class ListActivity extends AppCompatActivity implements IListView{
     private BeerAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private EditText editText;
+    private TextView history;
 
     @Override
     public void showBeers(String s) {
@@ -61,12 +63,6 @@ public class ListActivity extends AppCompatActivity implements IListView{
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        String[] data = new String[10];
-        data[0] = "Soproni IPA";
-        data[1] = "Mad Scientist Valgull";
-        data[2] = "Mad Scientist NeIPA";
-        data[3] = "Monyo Rabbit";
-        data[4] = "Borsodi Nitro";
 
         editText = findViewById(R.id.edittext);
 
@@ -97,11 +93,6 @@ public class ListActivity extends AppCompatActivity implements IListView{
             beers = new ArrayList<>();
         }
 
-       /* List<String> list = new ArrayList<>();
-
-        for(Beer beer: beers){
-            list.add(beer.getTagline());
-        }*/
 
        nameList = listPresenter.extractName(beers);
        String[] array = nameList.toArray(new String[nameList.size()]);
@@ -111,6 +102,12 @@ public class ListActivity extends AppCompatActivity implements IListView{
         // specify an adapter (see also next example)
         mAdapter = new BeerAdapter(array);
         recyclerView.setAdapter(mAdapter);
+
+        List<Beer> beer = listPresenter.getAllBeers();
+
+        history = findViewById(R.id.history);
+        history.setText(beer.get(0).getName());
+
     }
 
     private void filter(String text){

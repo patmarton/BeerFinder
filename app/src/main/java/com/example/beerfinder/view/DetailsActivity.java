@@ -54,7 +54,12 @@ public class DetailsActivity extends AppCompatActivity implements IDetailsView {
         tv2.setText(b.getDescription());
         tv3.setText(b.getTagline());
 
-        //Log.d("TETETETETETTETETETE",data);
+        List<Beer> list = new ArrayList<>();
+        list.add(b);
+
+        detailsPresenter.persistBeer(list);
+
+
     }
 
     @Override
