@@ -2,7 +2,10 @@ package com.example.beerfinder.view;
 
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,10 +29,12 @@ public class ListActivity extends AppCompatActivity implements IListView{
     ListPresenter listPresenter;
 
     List<Beer> beers;
+    List<String> nameList;
 
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private BeerAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    private EditText editText;
 
     @Override
     public void showBeers(String s) {
@@ -63,6 +68,25 @@ public class ListActivity extends AppCompatActivity implements IListView{
         data[3] = "Monyo Rabbit";
         data[4] = "Borsodi Nitro";
 
+        editText = findViewById(R.id.edittext);
+
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
+
 
 
         try {
@@ -79,14 +103,26 @@ public class ListActivity extends AppCompatActivity implements IListView{
             list.add(beer.getTagline());
         }*/
 
-       List<String> list = listPresenter.extractName(beers);
-       String[] array = list.toArray(new String[list.size()]);
+       nameList = listPresenter.extractName(beers);
+       String[] array = nameList.toArray(new String[nameList.size()]);
 
 
 
         // specify an adapter (see also next example)
         mAdapter = new BeerAdapter(array);
         recyclerView.setAdapter(mAdapter);
+    }
+
+    private void filter(String text){
+        ArrayList<String> filteredList  = new ArrayList<>();
+
+        for(String s: nameList) {
+            if (s.toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(s);
+            }
+        }
+        mAdapter.filterList(filteredList);
+
     }
 
     @Override

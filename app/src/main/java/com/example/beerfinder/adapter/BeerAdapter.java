@@ -12,8 +12,11 @@ import com.example.beerfinder.R;
 import com.example.beerfinder.presenter.ListPresenter;
 import com.example.beerfinder.view.DetailsActivity;
 
+import java.util.ArrayList;
+
 public class BeerAdapter extends RecyclerView.Adapter<BeerAdapter.MyViewHolder> {
     private String[] mDataset;
+
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -67,4 +70,12 @@ public class BeerAdapter extends RecyclerView.Adapter<BeerAdapter.MyViewHolder> 
     public int getItemCount() {
         return mDataset.length;
     }
+
+    public void filterList(ArrayList<String> filteredList){
+        String[] array = filteredList.toArray(new String[filteredList.size()]);
+        mDataset = array;
+        notifyDataSetChanged();
+    }
+
+
 }
