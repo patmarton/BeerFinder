@@ -27,7 +27,7 @@ import javax.inject.Inject;
 public class ListActivity extends AppCompatActivity implements IListView{
 
     @Inject
-    ListPresenter listPresenter;
+    public ListPresenter listPresenter;
 
     List<Beer> beers;
     List<String> nameList;
@@ -106,7 +106,7 @@ public class ListActivity extends AppCompatActivity implements IListView{
         List<Beer> beer = listPresenter.getAllBeers();
 
         history = findViewById(R.id.history);
-        history.setText(beer.get(0).getName());
+        history.setText(beer.get(beer.size()-1).getName());
 
     }
 

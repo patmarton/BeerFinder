@@ -10,6 +10,9 @@ import org.mockito.Mockito;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
+
 import okhttp3.Request;
 
 import okio.Timeout;
@@ -33,6 +36,10 @@ public class MockNetworkApi implements NetworkApi {
 
     private static void generateMockWebService() throws IOException {
 
+    }
+
+
+    public MockNetworkApi() {
     }
 
     @Override

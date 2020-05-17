@@ -1,6 +1,7 @@
 package com.example.beerfinder.mock;
 
 import com.example.beerfinder.network.NetworkApi;
+import com.example.beerfinder.network.NetworkInteractor;
 
 import javax.inject.Singleton;
 
@@ -22,8 +23,14 @@ public class MockNetworkModule {
 
     @Provides
     @Singleton
-    public NetworkApi provideArtistsApi(Retrofit.Builder retrofitBuilder) {
+    public NetworkApi provideNetworkApi(Retrofit.Builder retrofitBuilder) {
         return new MockNetworkApi();
+    }
+
+    @Provides
+    @Singleton
+    public NetworkInteractor provideNetworkInteractor(Retrofit.Builder retrofitBuilder) {
+        return new NetworkInteractor();
     }
 
 }
