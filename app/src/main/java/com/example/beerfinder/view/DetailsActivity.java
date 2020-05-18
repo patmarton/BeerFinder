@@ -18,6 +18,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.crashlytics.android.Crashlytics;
+
 public class DetailsActivity extends AppCompatActivity implements IDetailsView {
 
     @Inject
@@ -58,6 +60,8 @@ public class DetailsActivity extends AppCompatActivity implements IDetailsView {
         list.add(b);
 
         detailsPresenter.persistBeer(list);
+
+       // Crashlytics.getInstance().crash();
 
 
     }

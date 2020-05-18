@@ -13,6 +13,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+
 import retrofit2.Call;
 
 public class ListPresenter extends Presenter<IListView>{

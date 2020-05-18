@@ -17,6 +17,7 @@ import com.example.beerfinder.R;
 import com.example.beerfinder.model.Beer;
 import com.example.beerfinder.presenter.ListPresenter;
 import com.example.beerfinder.adapter.BeerAdapter;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,6 +32,8 @@ public class ListActivity extends AppCompatActivity implements IListView{
 
     List<Beer> beers;
     List<String> nameList;
+
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     private RecyclerView recyclerView;
     private BeerAdapter mAdapter;
@@ -108,6 +111,15 @@ public class ListActivity extends AppCompatActivity implements IListView{
         history = findViewById(R.id.history);
         history.setText(beer.get(beer.size()-1).getName());
 
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "itemid");
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "someEvent");
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "something");
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+
     }
 
     private void filter(String text){
@@ -119,6 +131,12 @@ public class ListActivity extends AppCompatActivity implements IListView{
             }
         }
         mAdapter.filterList(filteredList);
+
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "itemid");
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "someEvent2");
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "something");
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
     }
 

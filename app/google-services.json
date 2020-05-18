@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "480637699298",
+    "firebase_url": "https://beerfinder-7a6a3.firebaseio.com",
+    "project_id": "beerfinder-7a6a3",
+    "storage_bucket": "beerfinder-7a6a3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:480637699298:android:dc544fa86a6706fb410abb",
+        "android_client_info": {
+          "package_name": "com.example.beerfinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "480637699298-hlthuoc4phpr4mr1ge35h653tp55olt3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGLhlLGnSymZPzpOhGAblDiYqkByLohS0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "480637699298-hlthuoc4phpr4mr1ge35h653tp55olt3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
